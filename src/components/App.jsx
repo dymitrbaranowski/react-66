@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import Header from './Header/Header';
-import Counter from './Counter/Counter';
+//import Counter from './Counter/Counter';
 import ToDoList from './ToDoList/ToDoList';
 import Modal from './Modal/Modal';
 
@@ -21,8 +21,9 @@ class App extends Component {
     return (
       <div className="container">
         <Header showModal={this.showModal} />
-        <Counter />
+        {/* <Counter /> */}
         <ToDoList />
+
         {this.state.isShowModal && (
           <Modal closeModal={this.closeModal}>Some</Modal>
         )}
