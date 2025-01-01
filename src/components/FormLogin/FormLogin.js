@@ -19,6 +19,13 @@ class FormLogin extends Component {
       email: this.state.email,
       password: this.state.password,
     });
+
+    this.setState({
+      email: '',
+      password: '',
+    });
+
+    this.props.closeModal();
   };
 
   render() {
@@ -35,7 +42,7 @@ class FormLogin extends Component {
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             onChange={this.handleChange}
-            value={this.email}
+            value={this.state.email}
           />
           <div id="emailHelp" className="form-text">
             We'll never share your email with anyone else.
@@ -51,7 +58,7 @@ class FormLogin extends Component {
             className="form-control"
             id="exampleInputPassword1"
             onChange={this.handleChange}
-            value={this.password}
+            value={this.state.password}
           />
         </div>
         <div className="mb-3 form-check">

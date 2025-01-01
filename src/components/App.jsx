@@ -35,7 +35,10 @@ class App extends Component {
 
         {this.state.isShowModal && (
           <Modal closeModal={this.closeModal}>
-            <FormLogin createUser={this.createUser} />
+            <FormLogin
+              closeModal={this.closeModal}
+              createUser={this.createUser}
+            />
           </Modal>
         )}
       </div>
