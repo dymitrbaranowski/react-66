@@ -4,6 +4,8 @@ class FormLogin extends Component {
   state = {
     email: '',
     password: '',
+    isChecked: true,
+    gender: 'male',
   };
 
   handleChange = ({ target }) => {
@@ -15,10 +17,12 @@ class FormLogin extends Component {
   handleSabmit = e => {
     e.preventDefault();
 
-    this.props.createUser({
-      email: this.state.email,
-      password: this.state.password,
-    });
+    this.props.createUser(this.state);
+
+    // this.props.createUser({
+    //   email: this.state.email,
+    //   password: this.state.password,
+    // });
 
     this.setState({
       email: '',
@@ -26,6 +30,16 @@ class FormLogin extends Component {
     });
 
     this.props.closeModal();
+  };
+
+  handleCheck = ({ target: { checked } }) => {
+    this.setState({
+      isChecked: checked,
+    });
+  };
+
+  handleRadio = ({ target: { value } }) => {
+    this.setState({ gender: value });
   };
 
   render() {
@@ -66,12 +80,47 @@ class FormLogin extends Component {
             type="checkbox"
             className="form-check-input"
             id="exampleCheck1"
+            checked={this.state.isChecked}
+            onChange={this.handleCheck}
           />
           <label className="form-check-label" htmlFor="exampleCheck1">
-            Check me out
+            I agree
           </label>
         </div>
-        <button type="submit" className="btn btn-primary">
+
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="flexRadioDefault"
+            id="flexRadioDefault1"
+            checked={this.state.gender === 'male'}
+            onChange={this.handleRadio}
+            value="male"
+          />
+          <label class="form-check-label" for="flexRadioDefault1">
+            Male
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="flexRadioDefault"
+            id="flexRadioDefault2"
+            checked={this.state.gender === 'female'}
+            onChange={this.handleRadio}
+            value="female"
+          />
+          <label class="form-check-label" for="flexRadioDefault2">
+            Female
+          </label>
+        </div>
+        <button
+          disabled={!this.state.isChecked}
+          type="submit"
+          className="btn btn-primary"
+        >
           Submit
         </button>
       </form>
