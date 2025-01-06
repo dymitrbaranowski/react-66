@@ -143,12 +143,18 @@ class SignUpForm extends Component {
   };
 
   handleChange = evt => {
+    console.log(evt.target);
     const { name, value, type, checked } = evt.target;
     // Якщо тип елемента – checkbox, беремо значення checked,
     // в іншому випадку – value
     this.setState({ [name]: type === 'checkbox' ? checked : value });
   };
 
+  handleCheck = ({ target: { checked } }) => {
+    this.setState({
+      agreed: checked,
+    });
+  };
   handleSubmit = e => {
     e.preventDefault();
     const { login, email, password, agreed } = this.state;
@@ -204,7 +210,8 @@ class SignUpForm extends Component {
           <input
             type="checkbox"
             checked={agreed}
-            onChange={this.handleChange}
+            //checked={this.state.checked}
+            onChange={this.handleCheck}
           />
         </label>
 
