@@ -5,6 +5,7 @@ import Modal from './Modal/Modal';
 import FormLogin from './FormLogin/FormLogin';
 
 import { nanoid } from 'nanoid';
+import SignUpForm from './FormLogin/FormLogin';
 
 class App extends Component {
   state = {
@@ -35,10 +36,11 @@ class App extends Component {
 
         {this.state.isShowModal && (
           <Modal closeModal={this.closeModal}>
-            <FormLogin
+            {/* <FormLogin
               closeModal={this.closeModal}
               createUser={this.createUser}
-            />
+            /> */}
+            <SignUpForm />
           </Modal>
         )}
       </div>
